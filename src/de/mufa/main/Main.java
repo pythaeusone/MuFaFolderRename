@@ -4,9 +4,20 @@ import de.mufa.controller.Main_C;
 import de.mufa.model.Main_M;
 import de.mufa.view.Main_V;
 
+/**
+ * Die Main Klasse, Einstiegspunkt
+ * 
+ * @author MustafaJukic
+ *
+ */
 public class Main
 {
 
+	/**
+	 * Startpunkt von Java.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 		Main_V mv = new Main_V();

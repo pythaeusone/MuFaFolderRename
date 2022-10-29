@@ -13,7 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ListSelectionListener;
 
+/**
+ * Klasse fuer die Main View.
+ * 
+ * @author MustafaJukic
+ *
+ */
 public class Main_V extends JFrame
 {
 	public JTextField txt_pathFromMainFolder;
@@ -23,6 +30,9 @@ public class Main_V extends JFrame
 	public DefaultListModel<String> model;
 	public JPanel panel;
 
+	/**
+	 * Konstruktor der Main View.
+	 */
 	public Main_V()
 	{
 		setResizable(false);
@@ -88,9 +98,26 @@ public class Main_V extends JFrame
 
 	}
 
+	/**
+	 * Button Listener, reagiert auf Klicks und sagt an den Controller welcher
+	 * Button das ist.
+	 * 
+	 * @param a - ButtonSource wird gesendet.
+	 */
 	public void MainVButtonListener(ActionListener a)
 	{
 		btn_openFolder.setActionCommand("OpenFolder");
 		btn_openFolder.addActionListener(a);
+	}
+
+	/**
+	 * Wenn ein Element in der JList angeklickt wird, reagiert der Controller
+	 * darauf.
+	 * 
+	 * @param i - Das Element was selected ist, wird uebergeben.
+	 */
+	public void MainVListSelectionListener(ListSelectionListener i)
+	{
+		list_Folders.addListSelectionListener(i);
 	}
 }
