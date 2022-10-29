@@ -86,7 +86,8 @@ public class Main_C implements ActionListener, ListSelectionListener
 	{
 		if (!e.getValueIsAdjusting())
 		{
-			System.out.println(mv.list_Folders.getSelectedValue().toString());
+			mv.txt_StringOne.setText(mv.list_Folders.getSelectedValue().toString());
+			mv.txt_StringTwo.setText(mv.list_Folders.getSelectedValue().toString());
 		}
 
 	}
@@ -110,7 +111,7 @@ public class Main_C implements ActionListener, ListSelectionListener
 		}
 		else
 		{
-			System.out.println("Kein Ordner gewaehlt!");
+			mv.txt_pathFromMainFolder.setText("Kein Ordner gewaehlt!");
 		}
 	}
 
