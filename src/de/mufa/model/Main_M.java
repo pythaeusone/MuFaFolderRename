@@ -1,16 +1,19 @@
 package de.mufa.model;
 
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  * Klasse vom Main Model
  * 
- * @author MustafaJukic
+ * @author MuFa
  *
  */
 public class Main_M
 {
 	private File folderPath;
+	private String[] fL;
+	ArrayList<String> log = new ArrayList<String>();
 
 	/**
 	 * Gibt den Ordnerpfad zurueck.
@@ -40,8 +43,55 @@ public class Main_M
 	 */
 	public String[] getFolderList(File filePath)
 	{
-		String[] fL = filePath.list();
+		fL = filePath.list();
 		return fL;
+	}
+
+	/**
+	 * Diese Methode benennt nur einen Ordner um.
+	 * 
+	 * @param oldName   - Alter Ordnername.
+	 * @param removeOne - String Eins, der entfernt werden soll.
+	 * @param removeTwo - String Zwei, der entfernt werden soll, kann auch leer
+	 *                  bleiben.
+	 * @return - Gibt eine Log als ArrayListe zurueck mit dem Alten und neuen Pfad.
+	 */
+	public ArrayList<String> renameOne(String oldName, String removeOne, String removeTwo)
+	{
+		String newFolderName = "";
+		log.clear();
+		newFolderName = (oldName.replace(removeOne, "")).replace(removeTwo, "");
+		File oldDir = new File(folderPath + File.separator + oldName);
+		log.add(oldDir.toString());
+		File newDir = new File(folderPath + File.separator + newFolderName);
+		log.add(newDir.toString());
+		oldDir.renameTo(newDir);
+
+		return log;
+	}
+
+	/**
+	 * Diese Methode benennt alle Order vom gewaehlten Pfad um.
+	 * 
+	 * @param removeOne - String Eins, der entfernt werden soll.
+	 * @param removeTwo - String Zwei, der entfernt werden soll, kann auch leer
+	 * @return - Gibt eine Log als ArrayListe zurueck mit dem Alten und neuen Pfad.
+	 */
+	public ArrayList<String> renameAll(String removeOne, String removeTwo)
+	{
+		String newFolderName = "";
+		log.clear();
+		for (String f : fL)
+		{
+			newFolderName = (f.replace(removeOne, "")).replace(removeTwo, "");
+			File oldDir = new File(folderPath + File.separator + f);
+			log.add(oldDir.toString());
+			File newDir = new File(folderPath + File.separator + newFolderName);
+			log.add(newDir.toString());
+			oldDir.renameTo(newDir);
+		}
+
+		return log;
 	}
 
 }

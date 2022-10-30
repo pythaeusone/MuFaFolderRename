@@ -3,6 +3,7 @@ package de.mufa.controller;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import javax.swing.event.ListSelectionEvent;
@@ -14,13 +15,14 @@ import de.mufa.view.Main_V;
 /**
  * Die Main Controller Klasse.
  * 
- * @author MustafaJukic
+ * @author MuFa
  *
  */
 public class Main_C implements ActionListener, ListSelectionListener
 {
 	Main_V mv;
 	Main_M mm;
+	ButtonColor_C bcc;
 
 	/**
 	 * Konstruktor der Main Controller Klasse.
@@ -34,6 +36,8 @@ public class Main_C implements ActionListener, ListSelectionListener
 		this.mm = mm;
 		this.mv.MainVButtonListener(this);
 		this.mv.MainVListSelectionListener(this);
+
+		bcc = new ButtonColor_C(mv);
 	}
 
 	/**
@@ -69,6 +73,9 @@ public class Main_C implements ActionListener, ListSelectionListener
 		{
 		case "OpenFolder":
 			folderChooser();
+			break;
+		case "RunRename":
+			checkRadioButton();
 			break;
 		default:
 			System.out.println("Default");
@@ -125,5 +132,59 @@ public class Main_C implements ActionListener, ListSelectionListener
 		{
 			mv.model.addElement(fL);
 		}
+	}
+
+	/**
+	 * Ruft die Rename Methode auf, je nach RadioButton.
+	 */
+	void checkRadioButton()
+	{
+		if (mv.rdbtn_renameAll.isSelected())
+		{
+			renameAll();
+		}
+		if (mv.rdbtn_renameOne.isSelected())
+		{
+			renameOne();
+		}
+	}
+
+	/*
+	 * Diese Methode uebergibt dem Main Model renameOne Methode die Parameter zum
+	 * umbenennen. Und danach wird die Rueckgabe als Log in eine JTextArea
+	 * geprintet.
+	 */
+	void renameOne()
+	{
+		ArrayList<String> log = mm.renameOne(mv.list_Folders.getSelectedValue().toString(), mv.txt_StringOne.getText(),
+				mv.txt_StringTwo.getText());
+		for (String l : log)
+		{
+			mv.textArea_log.append(l + "\n");
+		}
+	}
+
+	/*
+	 * Diese Methode uebergibt dem Main Model renameAll Methode die Parameter zum
+	 * umbenennen. Und danach wird die Rueckgabe als Log in eine JTextArea
+	 * geprintet.
+	 */
+	void renameAll()
+	{
+		ArrayList<String> log = mm.renameAll(mv.txt_StringOne.getText(),
+				mv.txt_StringTwo.getText());
+		for (String l : log)
+		{
+			mv.textArea_log.append(l + "\n");
+		}
+	}
+
+	/**
+	 * Uebergibt den MouseListener and die Buttons fuer die Animation.
+	 */
+	public void buttonColor()
+	{
+		mv.btn_openFolder.addMouseListener(bcc);
+		mv.btn_runRename.addMouseListener(bcc);
 	}
 }

@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
@@ -21,7 +22,7 @@ import javax.swing.event.ListSelectionListener;
 /**
  * Klasse fuer die Main View.
  * 
- * @author MustafaJukic
+ * @author MuFa
  *
  */
 public class Main_V extends JFrame
@@ -40,7 +41,7 @@ public class Main_V extends JFrame
 	public JRadioButton rdbtn_renameOne;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	public JButton btn_runRename;
-	public JLabel lbl_printLog;
+	public JTextArea textArea_log;
 	public JScrollPane scrollPane;
 
 	/**
@@ -77,7 +78,7 @@ public class Main_V extends JFrame
 		btn_openFolder.setOpaque(false);
 		btn_openFolder.setFocusTraversalKeysEnabled(false);
 		btn_openFolder.setFocusPainted(false);
-		btn_openFolder.setBorder(new LineBorder(Color.WHITE));
+		btn_openFolder.setBorder(new LineBorder(Color.WHITE, 2));
 		btn_openFolder.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btn_openFolder.setBounds(563, 10, 150, 23);
 		getContentPane().add(btn_openFolder);
@@ -198,31 +199,25 @@ public class Main_V extends JFrame
 		btn_runRename.setFocusTraversalKeysEnabled(false);
 		btn_runRename.setFocusPainted(false);
 		btn_runRename.setContentAreaFilled(false);
-		btn_runRename.setBorder(new LineBorder(Color.WHITE));
+		btn_runRename.setBorder(new LineBorder(new Color(255, 255, 255), 2));
 		btn_runRename.setBounds(220, 147, 140, 23);
 		getContentPane().add(btn_runRename);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setVerifyInputWhenFocusTarget(false);
-		scrollPane.setRequestFocusEnabled(false);
-		scrollPane.setOpaque(false);
-		scrollPane.setFocusTraversalKeysEnabled(false);
-		scrollPane.setBackground(Color.DARK_GRAY);
-		scrollPane.setBorder(null);
 		scrollPane.setBounds(220, 181, 493, 145);
 		getContentPane().add(scrollPane);
 
-		lbl_printLog = new JLabel("");
-		lbl_printLog.setOpaque(true);
-		lbl_printLog.setBackground(Color.DARK_GRAY);
-		scrollPane.setViewportView(lbl_printLog);
-		lbl_printLog.setHorizontalTextPosition(SwingConstants.LEFT);
-		lbl_printLog.setVerticalTextPosition(SwingConstants.TOP);
-		lbl_printLog.setVerticalAlignment(SwingConstants.TOP);
-		lbl_printLog.setHorizontalAlignment(SwingConstants.LEFT);
-		lbl_printLog.setForeground(Color.LIGHT_GRAY);
-		lbl_printLog.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lbl_printLog.setBorder(new LineBorder(Color.WHITE));
+		textArea_log = new JTextArea();
+		textArea_log.setForeground(Color.LIGHT_GRAY);
+		textArea_log.setFont(new Font("Tahoma", Font.BOLD, 12));
+		textArea_log.setVerifyInputWhenFocusTarget(false);
+		textArea_log.setRequestFocusEnabled(false);
+		textArea_log.setFocusable(false);
+		textArea_log.setEditable(false);
+		textArea_log.setFocusTraversalKeysEnabled(false);
+		textArea_log.setBorder(new LineBorder(Color.WHITE));
+		textArea_log.setBackground(Color.DARK_GRAY);
+		scrollPane.setViewportView(textArea_log);
 
 	}
 
@@ -236,6 +231,8 @@ public class Main_V extends JFrame
 	{
 		btn_openFolder.setActionCommand("OpenFolder");
 		btn_openFolder.addActionListener(a);
+		btn_runRename.setActionCommand("RunRename");
+		btn_runRename.addActionListener(a);
 	}
 
 	/**

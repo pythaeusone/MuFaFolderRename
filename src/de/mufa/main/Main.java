@@ -7,7 +7,7 @@ import de.mufa.view.Main_V;
 /**
  * Die Main Klasse, Einstiegspunkt
  * 
- * @author MustafaJukic
+ * @author MuFa
  *
  */
 public class Main
@@ -26,6 +26,7 @@ public class Main
 		Main_C mc = new Main_C(mv, mm);
 		
 		mc.buildView();
+		mc.buttonColor();
 	}
 
 }
