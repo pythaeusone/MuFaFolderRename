@@ -27,10 +27,11 @@ import javax.swing.event.ListSelectionListener;
  */
 public class Main_V extends JFrame
 {
+	private static final long serialVersionUID = 1L;
 	public JTextField txt_pathFromMainFolder;
 	public JButton btn_openFolder;
 	public JLabel lbl_1;
-	public JList list_Folders;
+	public JList<String> list_Folders;
 	public DefaultListModel<String> model;
 	public JLabel lbl_3;
 	public JLabel lbl_4;
@@ -43,6 +44,7 @@ public class Main_V extends JFrame
 	public JButton btn_runRename;
 	public JTextArea textArea_log;
 	public JScrollPane scrollPane;
+	public JScrollPane scrollPane_1;
 
 	/**
 	 * Konstruktor der Main View.
@@ -92,7 +94,17 @@ public class Main_V extends JFrame
 		getContentPane().add(lbl_1);
 
 		model = new DefaultListModel<>();
-		list_Folders = new JList(model);
+
+		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setVerifyInputWhenFocusTarget(false);
+		scrollPane_1.setRequestFocusEnabled(false);
+		scrollPane_1.setBackground(Color.DARK_GRAY);
+		scrollPane_1.setFocusTraversalKeysEnabled(false);
+		scrollPane_1.setBorder(new LineBorder(Color.WHITE));
+		scrollPane_1.setBounds(10, 78, 200, 248);
+		getContentPane().add(scrollPane_1);
+		list_Folders = new JList<String>(model);
+		scrollPane_1.setViewportView(list_Folders);
 		list_Folders.setSelectionBackground(Color.GRAY);
 		list_Folders.setVerifyInputWhenFocusTarget(false);
 		list_Folders.setRequestFocusEnabled(false);
@@ -100,10 +112,7 @@ public class Main_V extends JFrame
 		list_Folders.setBackground(Color.DARK_GRAY);
 		list_Folders.setFont(new Font("Tahoma", Font.BOLD, 12));
 		list_Folders.setForeground(Color.LIGHT_GRAY);
-		list_Folders.setOpaque(false);
-		list_Folders.setBorder(new LineBorder(Color.WHITE));
-		list_Folders.setBounds(10, 78, 200, 248);
-		getContentPane().add(list_Folders);
+		list_Folders.setBorder(null);
 
 		lbl_3 = new JLabel("1. String to remove:");
 		lbl_3.setBorder(new LineBorder(Color.WHITE));
