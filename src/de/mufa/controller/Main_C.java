@@ -128,6 +128,7 @@ public class Main_C implements ActionListener, ListSelectionListener
 	 */
 	void fillFolderList(String[] folderList)
 	{
+		mv.model.clear();
 		for (String fL : folderList)
 		{
 			mv.model.addElement(fL);
