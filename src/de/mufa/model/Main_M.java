@@ -94,4 +94,15 @@ public class Main_M
 		return log;
 	}
 
+	public String cutStringLeft(String oldName, int carretPosi)
+	{
+		return oldName.substring(carretPosi);
+	}
+
+	public String cutStringRight(String oldName, int carretPosi)
+	{
+
+		return oldName.substring(0, carretPosi);
+	}
+
 }

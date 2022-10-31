@@ -1,6 +1,7 @@
 package de.mufa.controller;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -59,6 +60,7 @@ public class ButtonColor_C implements MouseListener
 	public void mouseEntered(MouseEvent e)
 	{
 		((JButton) e.getSource()).setBorder(new LineBorder(new Color(128, 128, 128), 2));
+		((JButton) e.getSource()).setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}
 
 	/*
@@ -68,5 +70,6 @@ public class ButtonColor_C implements MouseListener
 	public void mouseExited(MouseEvent e)
 	{
 		((JButton) e.getSource()).setBorder(new LineBorder(new Color(255, 255, 255), 2));
+		((JButton) e.getSource()).setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 }

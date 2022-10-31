@@ -77,6 +77,22 @@ public class Main_C implements ActionListener, ListSelectionListener
 		case "RunRename":
 			checkRadioButton();
 			break;
+		case "CutStringLeft":
+			if (mv.txt_StringOne.isFocusOwner())
+				mv.txt_StringOne
+						.setText(mm.cutStringLeft(mv.txt_StringOne.getText(), mv.txt_StringOne.getCaretPosition()));
+			if (mv.txt_StringTwo.isFocusOwner())
+				mv.txt_StringTwo
+						.setText(mm.cutStringLeft(mv.txt_StringTwo.getText(), mv.txt_StringTwo.getCaretPosition()));
+			break;
+		case "CutStringRight":
+			if (mv.txt_StringOne.isFocusOwner())
+				mv.txt_StringOne
+						.setText(mm.cutStringRight(mv.txt_StringOne.getText(), mv.txt_StringOne.getCaretPosition()));
+			if (mv.txt_StringTwo.isFocusOwner())
+				mv.txt_StringTwo
+						.setText(mm.cutStringRight(mv.txt_StringTwo.getText(), mv.txt_StringTwo.getCaretPosition()));
+			break;
 		default:
 			System.out.println("Default");
 			break;
@@ -93,8 +109,12 @@ public class Main_C implements ActionListener, ListSelectionListener
 	{
 		if (!e.getValueIsAdjusting())
 		{
-			mv.txt_StringOne.setText(mv.list_Folders.getSelectedValue().toString());
-			mv.txt_StringTwo.setText(mv.list_Folders.getSelectedValue().toString());
+			if (mv.list_Folders.getSelectedValue() != null)
+			{
+				mv.txt_StringOne.setText(mv.list_Folders.getSelectedValue().toString());
+				mv.txt_StringTwo.setText(mv.list_Folders.getSelectedValue().toString());
+			}
+
 		}
 
 	}
@@ -187,5 +207,7 @@ public class Main_C implements ActionListener, ListSelectionListener
 	{
 		mv.btn_openFolder.addMouseListener(bcc);
 		mv.btn_runRename.addMouseListener(bcc);
+		mv.btn_cutStringLeft.addMouseListener(bcc);
+		mv.btn_cutStringRight.addMouseListener(bcc);
 	}
 }

@@ -1,7 +1,6 @@
 package de.mufa.view;
 
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
@@ -45,6 +44,8 @@ public class Main_V extends JFrame
 	public JTextArea textArea_log;
 	public JScrollPane scrollPane;
 	public JScrollPane scrollPane_1;
+	public JButton btn_cutStringLeft;
+	public JButton btn_cutStringRight;
 
 	/**
 	 * Konstruktor der Main View.
@@ -52,9 +53,9 @@ public class Main_V extends JFrame
 	public Main_V()
 	{
 		setResizable(false);
-		setTitle("MuFa Folder Renamer 2.0");
+		setTitle("MuFa Folder Renamer 2.1");
 		getContentPane().setBackground(Color.DARK_GRAY);
-		setBounds(100, 100, 739, 376);
+		setBounds(100, 100, 739, 409);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
@@ -71,7 +72,6 @@ public class Main_V extends JFrame
 		txt_pathFromMainFolder.setColumns(10);
 
 		btn_openFolder = new JButton("1. - Open Mainfolder");
-		btn_openFolder.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_openFolder.setForeground(Color.LIGHT_GRAY);
 		btn_openFolder.setContentAreaFilled(false);
 		btn_openFolder.setVerifyInputWhenFocusTarget(false);
@@ -101,7 +101,7 @@ public class Main_V extends JFrame
 		scrollPane_1.setBackground(Color.DARK_GRAY);
 		scrollPane_1.setFocusTraversalKeysEnabled(false);
 		scrollPane_1.setBorder(new LineBorder(Color.WHITE));
-		scrollPane_1.setBounds(10, 78, 200, 248);
+		scrollPane_1.setBounds(10, 78, 200, 281);
 		getContentPane().add(scrollPane_1);
 		list_Folders = new JList<String>(model);
 		scrollPane_1.setViewportView(list_Folders);
@@ -177,7 +177,7 @@ public class Main_V extends JFrame
 		rdbtn_renameAll.setBackground(Color.DARK_GRAY);
 		rdbtn_renameAll.setBorder(new LineBorder(Color.WHITE));
 		rdbtn_renameAll.setFont(new Font("Tahoma", Font.BOLD, 12));
-		rdbtn_renameAll.setBounds(370, 146, 165, 23);
+		rdbtn_renameAll.setBounds(370, 180, 165, 23);
 		getContentPane().add(rdbtn_renameAll);
 
 		rdbtn_renameOne = new JRadioButton("Rename only One.");
@@ -194,11 +194,10 @@ public class Main_V extends JFrame
 		rdbtn_renameOne.setBorderPainted(true);
 		rdbtn_renameOne.setBorder(new LineBorder(Color.WHITE));
 		rdbtn_renameOne.setBackground(Color.DARK_GRAY);
-		rdbtn_renameOne.setBounds(548, 146, 165, 23);
+		rdbtn_renameOne.setBounds(548, 180, 165, 23);
 		getContentPane().add(rdbtn_renameOne);
 
-		btn_runRename = new JButton("4. - Run rename");
-		btn_runRename.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_runRename = new JButton("6. - Run rename");
 		btn_runRename.setVerifyInputWhenFocusTarget(false);
 		btn_runRename.setRolloverEnabled(false);
 		btn_runRename.setRequestFocusEnabled(false);
@@ -209,11 +208,11 @@ public class Main_V extends JFrame
 		btn_runRename.setFocusPainted(false);
 		btn_runRename.setContentAreaFilled(false);
 		btn_runRename.setBorder(new LineBorder(new Color(255, 255, 255), 2));
-		btn_runRename.setBounds(220, 147, 140, 23);
+		btn_runRename.setBounds(220, 181, 140, 23);
 		getContentPane().add(btn_runRename);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(220, 181, 493, 145);
+		scrollPane.setBounds(220, 214, 493, 145);
 		getContentPane().add(scrollPane);
 
 		textArea_log = new JTextArea();
@@ -227,6 +226,34 @@ public class Main_V extends JFrame
 		textArea_log.setBorder(new LineBorder(Color.WHITE));
 		textArea_log.setBackground(Color.DARK_GRAY);
 		scrollPane.setViewportView(textArea_log);
+
+		btn_cutStringLeft = new JButton("Cut left from Carret");
+		btn_cutStringLeft.setVerifyInputWhenFocusTarget(false);
+		btn_cutStringLeft.setRolloverEnabled(false);
+		btn_cutStringLeft.setRequestFocusEnabled(false);
+		btn_cutStringLeft.setOpaque(false);
+		btn_cutStringLeft.setForeground(Color.LIGHT_GRAY);
+		btn_cutStringLeft.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btn_cutStringLeft.setFocusTraversalKeysEnabled(false);
+		btn_cutStringLeft.setFocusPainted(false);
+		btn_cutStringLeft.setContentAreaFilled(false);
+		btn_cutStringLeft.setBorder(new LineBorder(new Color(255, 255, 255), 2));
+		btn_cutStringLeft.setBounds(370, 146, 165, 23);
+		getContentPane().add(btn_cutStringLeft);
+
+		btn_cutStringRight = new JButton("Cut right from Carret");
+		btn_cutStringRight.setVerifyInputWhenFocusTarget(false);
+		btn_cutStringRight.setRolloverEnabled(false);
+		btn_cutStringRight.setRequestFocusEnabled(false);
+		btn_cutStringRight.setOpaque(false);
+		btn_cutStringRight.setForeground(Color.LIGHT_GRAY);
+		btn_cutStringRight.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btn_cutStringRight.setFocusTraversalKeysEnabled(false);
+		btn_cutStringRight.setFocusPainted(false);
+		btn_cutStringRight.setContentAreaFilled(false);
+		btn_cutStringRight.setBorder(new LineBorder(new Color(255, 255, 255), 2));
+		btn_cutStringRight.setBounds(548, 146, 165, 23);
+		getContentPane().add(btn_cutStringRight);
 
 	}
 
@@ -242,6 +269,10 @@ public class Main_V extends JFrame
 		btn_openFolder.addActionListener(a);
 		btn_runRename.setActionCommand("RunRename");
 		btn_runRename.addActionListener(a);
+		btn_cutStringLeft.setActionCommand("CutStringLeft");
+		btn_cutStringLeft.addActionListener(a);
+		btn_cutStringRight.setActionCommand("CutStringRight");
+		btn_cutStringRight.addActionListener(a);
 	}
 
 	/**
