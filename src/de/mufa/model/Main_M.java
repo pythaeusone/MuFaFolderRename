@@ -74,7 +74,7 @@ public class Main_M
 	 * Diese Methode benennt alle Order vom gewaehlten Pfad um.
 	 * 
 	 * @param removeOne - String Eins, der entfernt werden soll.
-	 * @param removeTwo - String Zwei, der entfernt werden soll, kann auch leer
+	 * @param removeTwo - String Zwei, der entfernt werden soll, kann auch leer.
 	 * @return - Gibt eine Log als ArrayListe zurueck mit dem Alten und neuen Pfad.
 	 */
 	public ArrayList<String> renameAll(String removeOne, String removeTwo)
@@ -94,11 +94,25 @@ public class Main_M
 		return log;
 	}
 
+	/**
+	 * Schneidet alles Links vom Curser weg.
+	 * 
+	 * @param oldName    - Alter String Text.
+	 * @param carretPosi - Position des Cursers.
+	 * @return - Gibt den gekuerzten String Text zurueck.
+	 */
 	public String cutStringLeft(String oldName, int carretPosi)
 	{
 		return oldName.substring(carretPosi);
 	}
 
+	/**
+	 * Schneidet alles Rechts vom Curser weg.
+	 * 
+	 * @param oldName    - Alter String Text.
+	 * @param carretPosi - Position des Cursers.
+	 * @return - Gibt den gekuerzten String Text zurueck.
+	 */
 	public String cutStringRight(String oldName, int carretPosi)
 	{
 
