@@ -139,6 +139,7 @@ public class Main_C implements ActionListener, ListSelectionListener
 		else
 		{
 			mv.txt_pathFromMainFolder.setText("Kein Ordner gewaehlt!");
+			mv.model.clear();
 		}
 	}
 
